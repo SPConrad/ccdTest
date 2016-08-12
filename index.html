@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+        myFunction(xhttp);
+    }
+};
+xhttp.open("GET", "ccd.xml", true);
+xhttp.send();
+
+
+
+function myFunction(xml) {
+    var xmlDoc = xml.responseXML;
+    var patientRole = xmlDoc.getElementsByTagName("patientRole")[0];
+
+
+    var childNodes = patientRole.childNodes;
+
+    console.log(childNodes[1].nodeValue);
+    console.log(childNodes[5]);
+    console.log(childNodes[9]);
+    console.log(childNodes[11]);
+    console.log(childNodes[15]);
+    console.log(childNodes[17]);
+
+
+
+   
+    document.getElementById("demo").innerHTML =
+    xmlDoc.getElementsByTagName("patientRole")[0].childNodes[0].nodeValue;
+}
+</script>
+
+</body>
+</html>
